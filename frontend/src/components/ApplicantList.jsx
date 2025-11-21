@@ -64,7 +64,7 @@ export default function ApplicantList({ jobId, onUpdateStatus, refreshKey }) {
             <div className="text-right space-y-2">
               {app.resume ? (
                 <a
-                  href={`http://localhost:5000/uploads/resumes/${app.resume}`}
+                  href={`https://job-tracking-backend-yejq.onrender.com/uploads/resumes/${app.resume}`}
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm underline text-indigo-600"
@@ -89,3 +89,4 @@ export default function ApplicantList({ jobId, onUpdateStatus, refreshKey }) {
     </div>
   );
 }
+
