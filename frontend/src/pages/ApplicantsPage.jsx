@@ -128,7 +128,7 @@ export default function ApplicantsPage() {
 
                     <div className="mt-2 text-sm">
                       <a
-                        href={`http://localhost:5000/uploads/resumes/${app.resume}`}
+                        href={`https://job-tracking-backend-yejq.onrender.com/uploads/resumes/${app.resume}`}
                         target="_blank"
                         rel="noreferrer"
                         className="text-indigo-600 underline"
@@ -172,3 +172,4 @@ export default function ApplicantsPage() {
     </div>
   );
 }
+
