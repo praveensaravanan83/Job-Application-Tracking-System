@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://job-tracking-backend-yejq.onrender.com/api",
   withCredentials: false,
 });
 
