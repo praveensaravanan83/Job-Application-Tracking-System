@@ -56,7 +56,7 @@ export default function CandidateDashboard() {
                     </div>
                     <div className="text-right">
                       <div className="text-sm">Status: <span className="font-semibold">{app.status}</span></div>
-                      <a className="text-sm underline text-indigo-600" href={`http://localhost:5000/uploads/resumes/${app.resume}`} target="_blank" rel="noreferrer">View resume</a>
+                      <a className="text-sm underline text-indigo-600" href={`https://job-tracking-backend-yejq.onrender.com/uploads/resumes/${app.resume}`} target="_blank" rel="noreferrer">View resume</a>
                     </div>
                   </div>
                 </div>
@@ -68,3 +68,4 @@ export default function CandidateDashboard() {
     </div>
   );
 }
+
