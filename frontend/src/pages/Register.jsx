@@ -1,6 +1,6 @@
 // src/pages/Register.jsx
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api.js";            // <-- USE YOUR AXIOS HELPER
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -14,10 +14,18 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      await axios.post("http://localhost:5000/api", { name, email, password, role });
+      await api.post("/auth/register", {
+        name,
+        email,
+        password,
+        role,
+      });
+
       alert("Registration successful!");
       navigate("/login");
+
     } catch (err) {
       alert(err?.response?.data?.message || "Registration failed");
     } finally {
@@ -35,24 +43,57 @@ function Register() {
           </div>
 
           <form onSubmit={handleSubmit} className="grid gap-4">
-            <input className="form-input" type="text" placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
 
-            <input className="form-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input
+              className="form-input"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-            <input className="form-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-            <select className="form-input" value={role} onChange={(e) => setRole(e.target.value)}>
+            <select
+              className="form-input"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
               <option value="candidate">Candidate</option>
               <option value="hr">HR</option>
             </select>
 
-            <button type="submit" className="btn-primary w-full" disabled={loading}>
+            <button
+              type="submit"
+              className="btn-primary w-full"
+              disabled={loading}
+            >
               {loading ? "Registering..." : "Register"}
             </button>
 
             <div className="text-center muted">
               Already have an account?{" "}
-              <button type="button" onClick={() => navigate("/login")} className="text-indigo-600 underline">
+              <button
+                type="button"
+                onClick={() => navigate("/login")}
+                className="text-indigo-600 underline"
+              >
                 Login
               </button>
             </div>
@@ -64,4 +105,3 @@ function Register() {
 }
 
 export default Register;
-
