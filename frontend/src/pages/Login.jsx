@@ -1,8 +1,8 @@
 // src/pages/Login.jsx
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import api from "../api/api";  // <-- IMPORTANT: using your axios instance
 
 function Login() {
   const { login } = useAuth();
@@ -14,8 +14,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      const res = await axios.post("http://localhost:5000/api", {
+      const res = await api.post("/auth/login", {  // <-- using backend route
         email,
         password,
       });
@@ -88,4 +89,3 @@ function Login() {
 }
 
 export default Login;
-
