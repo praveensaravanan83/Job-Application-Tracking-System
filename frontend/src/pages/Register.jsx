@@ -15,7 +15,7 @@ function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/auth/register", { name, email, password, role });
+      await axios.post("http://localhost:5000/api", { name, email, password, role });
       alert("Registration successful!");
       navigate("/login");
     } catch (err) {
@@ -64,3 +64,4 @@ function Register() {
 }
 
 export default Register;
+
